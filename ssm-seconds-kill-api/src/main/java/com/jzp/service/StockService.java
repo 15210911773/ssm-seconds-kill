@@ -15,10 +15,4 @@ public interface StockService {
      */
     public Stock getStockById(int sid);
 
-    /**
-     * 根据id修改库存信息
-     * @param stock
-     */
-    public void updateStockById(Stock stock);
-
 }

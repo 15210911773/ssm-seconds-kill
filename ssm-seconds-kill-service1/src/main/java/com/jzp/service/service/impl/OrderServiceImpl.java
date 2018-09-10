@@ -29,13 +29,19 @@ public class OrderServiceImpl implements DBOrderService {
 
     @Override
     public int createWrongOrder(int sid) {
-        //校验库存
-        Stock stock = checkStock(sid);
-        //扣库存
-        saleStock(stock);
-        //创建订单
-        int id = createOrder(stock);
-        return id;
+
+        try {
+            //校验库存
+            Stock stock = checkStock(sid);
+            //扣库存
+            saleStock(stock);
+            //创建订单
+            int id = createOrder(stock);
+            return id;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     private int createOrder(Stock stock) {
@@ -48,10 +54,12 @@ public class OrderServiceImpl implements DBOrderService {
         return result.getId();
     }
 
-    private void saleStock(Stock stock) {
+    private void saleStock(Stock stock) throws Exception {
         log.info("修改库存");
-        stock.setSale(stock.getSale() + 1);
-        stockService.updateStockById(stock);
+        Integer count = stockService.updateByOptimistic(stock.getVersion(), stock.getId());
+        if (count == 0) {
+            throw new Exception("修改库存失败!");
+        }
     }
 
     private Stock checkStock(int sid) {

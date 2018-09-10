@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
     private DBOrderService orderService;
 
     @Override
-    public int createWrongOrder(int sid) {
+    public int createWrongOrder(int sid) throws Exception {
         return orderService.createWrongOrder(sid);
     }
 

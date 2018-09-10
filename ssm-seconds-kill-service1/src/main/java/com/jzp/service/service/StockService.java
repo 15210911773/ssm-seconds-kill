@@ -16,9 +16,11 @@ public interface StockService {
     public Stock getStockById(int sid);
 
     /**
-     * 根据id修改库存信息
-     * @param stock
+     * 乐观锁修改
+     * @param version
+     * @param id
+     * @return
      */
-    public void updateStockById(Stock stock);
+    public Integer updateByOptimistic(Integer version, Integer id);
 
 }

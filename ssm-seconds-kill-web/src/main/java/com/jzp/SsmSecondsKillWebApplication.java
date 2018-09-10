@@ -1,13 +1,13 @@
 package com.jzp;
 
-import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-//@DubboComponentScan(basePackages = "com.jzp.controller")
 @EnableDubboConfiguration
+@ComponentScan(value = {"com.jzp", "com.crossoverjie.distributed.intercept"})
 public class SsmSecondsKillWebApplication {
 
 	public static void main(String[] args) {

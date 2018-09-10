@@ -23,8 +23,8 @@ public class StockServiceImpl implements StockService {
     }
 
     @Override
-    public void updateStockById(Stock stock) {
-        stockMapper.save(stock);
+    public Integer updateByOptimistic(Integer version, Integer id) {
+        return stockMapper.updateByOptimistic(version, id);
     }
 
 }

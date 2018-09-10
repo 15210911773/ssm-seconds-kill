@@ -24,8 +24,4 @@ public class StockServiceImpl implements StockService {
         return stockService.getStockById(sid);
     }
 
-    @Override
-    public void updateStockById(Stock stock) {
-        stockService.updateStockById(stock);
-    }
 }

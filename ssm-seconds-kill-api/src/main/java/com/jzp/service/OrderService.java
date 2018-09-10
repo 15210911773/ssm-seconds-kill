@@ -6,6 +6,6 @@ package com.jzp.service;
  */
 public interface OrderService {
 
-    public int createWrongOrder(int sid);
+    public int createWrongOrder(int sid) throws Exception;
 
 }
